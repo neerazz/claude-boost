@@ -20,7 +20,7 @@ This repository showcases patterns for creating structured, reproducible AI agen
 ## 📁 Directory Structure
 
 ```
-claude-boost-public/
+claude-boost/
 ├── skills/              # Sample AI skill definitions
 │   ├── clear-thinking-gate/   # Pre-execution validation
 │   ├── self-critique-gate/    # Post-execution quality check
