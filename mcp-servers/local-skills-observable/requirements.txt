@@ -1,0 +1,3 @@
+# Observable Local Skills MCP Server
+mcp>=0.9.0
+

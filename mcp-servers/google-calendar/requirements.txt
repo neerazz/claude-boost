@@ -1,0 +1,13 @@
+# Google Calendar MCP Server
+# No external dependencies - uses only Python standard library
+# Requires Python 3.7+
+
+# This MCP server implements:
+# - OAuth 2.0 authentication flow (using urllib + http.server)
+# - Google Calendar API v3 operations
+# - MCP protocol over stdio
+
+# Optional: If you want to add type checking during development
+# mypy
+# types-urllib3
+

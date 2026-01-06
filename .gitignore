@@ -24,3 +24,16 @@ venv/
 
 # Logs
 *.log
+
+# Secrets & Tokens
+tokens.json
+*.keys.json
+credentials.json
+*.backup.*
+
+# Node modules
+node_modules/
+
+# Virtual environments
+venv/
+.venv/

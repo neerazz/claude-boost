@@ -1,0 +1,9 @@
+# Google Drive MCP Server
+# No external dependencies - uses only Python standard library
+# Requires Python 3.7+
+
+# This MCP server implements:
+# - OAuth 2.0 authentication flow
+# - Google Drive API v3 operations
+# - MCP protocol over stdio
+

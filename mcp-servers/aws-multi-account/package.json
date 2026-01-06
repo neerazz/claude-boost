@@ -1,0 +1,23 @@
+{
+  "name": "aws-multi-account-mcp",
+  "version": "1.0.0",
+  "description": "MCP server for managing multiple AWS accounts",
+  "type": "module",
+  "main": "index.js",
+  "bin": {
+    "aws-multi-account-mcp": "./index.js"
+  },
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [
+    "mcp",
+    "aws",
+    "multi-account"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.4"
+  }
+}

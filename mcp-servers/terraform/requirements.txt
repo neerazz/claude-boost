@@ -1,0 +1,10 @@
+# Terraform MCP Server
+# No external Python dependencies - uses only standard library
+# Requires Python 3.7+
+
+# IMPORTANT: Requires Terraform CLI to be installed:
+# https://developer.hashicorp.com/terraform/install
+#
+# macOS: brew install terraform
+# Linux: https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli
+

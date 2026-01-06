@@ -1,0 +1,7 @@
+google-genai>=0.4.0
+pillow>=10.0.0
+
+# Note: CLI fallback also requires:
+# - Google Cloud SDK (gcloud): https://cloud.google.com/sdk/docs/install
+# - Gemini CLI: gcloud components install gemini
+# - Authentication: gcloud auth login (with pro subscription account)

@@ -1,0 +1,22 @@
+# GitHub MCP Server
+# No external Python dependencies - uses only standard library
+# Requires Python 3.7+
+
+# Authentication: Requires a GitHub Personal Access Token (PAT)
+# Get from: https://github.com/settings/tokens
+#
+# Recommended PAT scopes:
+# - repo (full repo access including private)
+# - read:org (organization access)
+# - read:user (user profile)
+# - security_events (security alerts)
+# - workflow (actions/workflows)
+# - read:discussion (discussions)
+#
+# For fine-grained PATs, grant:
+# - Contents: Read
+# - Pull requests: Read and Write
+# - Issues: Read and Write
+# - Security alerts: Read
+# - Actions: Read
+

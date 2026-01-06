@@ -1,0 +1,22 @@
+servers:
+  aws-multi-account:
+    name: aws-multi-account
+    title: AWS Multi-Account Manager
+    description: Query and manage resources across all configured AWS accounts using AWS CLI
+    icon: https://www.svgrepo.com/show/448266/aws.svg
+    transport:
+      type: stdio
+      command: node
+      args:
+        - /Users/neeraj/.config/mcp-servers/aws-multi-account/index.js
+    tools:
+      - name: list_aws_profiles
+        description: List all configured AWS profiles with their account IDs and roles
+      - name: execute_aws_command
+        description: Execute an AWS CLI command on a specific profile
+      - name: query_all_accounts
+        description: Execute an AWS CLI command across all accounts
+      - name: get_resource_summary
+        description: Get summary of AWS resources across all accounts
+      - name: get_account_resources
+        description: Get all major resources for a specific account
