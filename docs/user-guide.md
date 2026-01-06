@@ -44,7 +44,7 @@ The AI will follow its internal protocol, perform research, and provide you with
 
 ## Boosting Your Profile
 
-This project is specifically designed to help you build evidence for career advancement (like the EB1A visa). You can use it to:
+This project is specifically designed to help you build evidence for career advancement. You can use it to:
 - **Discover Award Opportunities**: Find prestigious awards in your field.
 - **Identify Speaking Engagements**: Find conferences where you can share your expertise.
 - **Analyze Your Projects**: Quantify the impact of your work for your resume.
@@ -53,5 +53,5 @@ This project is specifically designed to help you build evidence for career adva
 ## Next Steps
 
 - Explore the different skills in the `skills/` directory.
-- Read the [Architecture Overview](ARCHITECTURE.md) to see how the system works under the hood.
+- Read the [Architecture Overview](architecture.md) to see how the system works under the hood.
 - Start using the skills to gather evidence for your professional portfolio!
