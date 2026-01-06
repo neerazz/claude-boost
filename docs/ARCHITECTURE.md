@@ -1,73 +1,86 @@
-# Architecture Overview
+# Architecture Deep Dive
 
-## System Design
+This document details the layered system architecture and data flow principles of the Claude Boost framework.
 
-The Claude Boost framework follows a layered architecture for AI agent capabilities.
+## 3-Layer Capability Model
 
-```
-┌─────────────────────────────────────────────────────────────┐
-│                     User Request                            │
-└─────────────────────────────────────────────────────────────┘
-                            │
-                            ▼
-┌─────────────────────────────────────────────────────────────┐
-│                      Hooks Layer                            │
-│  ┌─────────────┐  ┌─────────────┐  ┌─────────────────────┐  │
-│  │ Pre-Execute │  │  On-Error   │  │    Post-Execute     │  │
-│  └─────────────┘  └─────────────┘  └─────────────────────┘  │
-└─────────────────────────────────────────────────────────────┘
-                            │
-                            ▼
-┌─────────────────────────────────────────────────────────────┐
-│                     Skills Layer                            │
-│  ┌─────────────────────────────────────────────────────┐    │
-│  │    L3 Orchestrators (complex multi-step flows)      │    │
-│  └─────────────────────────────────────────────────────┘    │
-│  ┌─────────────────────────────────────────────────────┐    │
-│  │    L2 Composite (combine L1 skills)                 │    │
-│  └─────────────────────────────────────────────────────┘    │
-│  ┌─────────────────────────────────────────────────────┐    │
-│  │    L1 Atomic (single-purpose gates, validators)     │    │
-│  └─────────────────────────────────────────────────────┘    │
-└─────────────────────────────────────────────────────────────┘
-                            │
-                            ▼
-┌─────────────────────────────────────────────────────────────┐
-│                     Tools Layer                             │
-│  ┌─────────────┐  ┌─────────────┐  ┌─────────────────────┐  │
-│  │  Preflight  │  │  Post-hook  │  │      Utilities      │  │
-│  └─────────────┘  └─────────────┘  └─────────────────────┘  │
-└─────────────────────────────────────────────────────────────┘
+Claude Boost organizes AI agent capabilities into three distinct layers to ensure modularity and clear boundaries.
+
+```mermaid
+graph TD
+    subgraph L3["L3: Meta Orchestrators"]
+        O1["/journal orchestrator"]
+        O2["Strategic Planner"]
+    end
+
+    subgraph L2["L2: Composite Skills"]
+        C1["Slack Intelligence"]
+        C2["GitHub Work Intel"]
+        C3["Meeting Intelligence"]
+    end
+
+    subgraph L1["L1: Atomic Skills"]
+        A1["Clear Thinking Gate"]
+        A2["Self-Critique Gate"]
+        A3["Gap Analyzer"]
+        A4["Deduplicator"]
+    end
+
+    subgraph L0["L0: Foundation (MCP)"]
+        F1["Slack API"]
+        F2["Notion API"]
+        F3["GitHub API"]
+    end
+
+    L3 --> L2
+    L2 --> L1
+    L1 --> L0
 ```
 
-## Layer Responsibilities
+### Layer Responsibilities
 
-### Hooks Layer
-- Intercept execution at key points
-- Validate inputs and outputs
-- Enforce quality gates
+- **L3: Meta Orchestrators**: Coordinate complex, multi-domain workflows. They manage the high-level goal and delegate to L2 skills.
+- **L2: Composite Skills**: Combine multiple L1 atomic skills with domain-specific logic (e.g., analyzing communication trends).
+- **L1: Atomic Skills**: Pure, single-responsibility building blocks. They often perform validation, deduplication, or scoring.
+- **L0: Foundation (MCP)**: The raw integration layer providing access to external tools and data via the Model Context Protocol.
 
-### Skills Layer
-- **L1 (Atomic)**: Single-purpose, no dependencies
-- **L2 (Composite)**: Combine L1 skills with logic
-- **L3 (Orchestrator)**: Complex workflows with multiple skills
+## Execution Flow & Data Pipeline
 
-### Tools Layer
-- Python automation scripts
-- State management
-- External integrations
+Every user request follows a deterministic pipeline to ensure quality and reliability.
 
-## Data Flow
+```mermaid
+sequenceDiagram
+    participant User
+    participant Hook as Pre-Execute Hook
+    participant Gate1 as Clear Thinking Gate (L1)
+    participant Skill as Main Skill (L2/L3)
+    participant Gate2 as Self-Critique Gate (L1)
+    participant Tool as Post-Execute Sync
 
-1. User request enters through hooks
-2. Pre-execute hook validates and routes
-3. Skill executes with quality gates
-4. Post-execute hook validates output
-5. Tools sync state if needed
+    User->>Hook: Request
+    Hook->>Gate1: Validate Goals
+    Gate1->>Skill: Execute Logic
+    Skill->>Gate2: Validate Output
+    Gate2->>Tool: Sync State
+    Tool->>User: Result + Metrics
+```
 
-## Key Principles
+## Key Data Components
 
-1. **Determinism**: Every execution follows a predictable pattern
-2. **Quality Gates**: Pre and post validation on every skill
-3. **Composability**: Build complex behaviors from simple parts
-4. **Observability**: Track execution state and metrics
+### 1. Skill DAG (Directed Acyclic Graph)
+Located at `data/dag/skill_dag.json`, this file is the single source of truth for skill dependencies and layers. It is automatically updated by the `post_hook.py`.
+
+### 2. Evidence Ledger
+For research-heavy skills, an `evidence_ledger.csv` is generated to track every claim back to 3 independent sources, ensuring high-confidence outputs.
+
+### 3. Persona Cache
+User context is stored in `memory/user-persona/cache/` with a 6-hour TTL to ensure speed without sacrificing freshness.
+
+## Determinism via Code Before Prompts (Axiom #4)
+
+We minimize AI "hallucination" by using deterministic Python code for:
+- Data fetching and normalization.
+- Scoring algorithms and weight calculations.
+- File system operations and state management.
+
+The AI agent's role is focused on **high-level reasoning, synthesis, and creative generation** based on the structured data provided by the tools.
