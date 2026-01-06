@@ -5,7 +5,7 @@ A collection of sample skills, hooks, and tools demonstrating how to build deter
 ## 🚀 Getting Started
 
 - **[User Guide](docs/user-guide.md)**: New to AI agents? Start here.
-- **[Quick Start](docs/QUICKSTART.md)**: 5-minute setup guide.
+- **[Quick Start](docs/quickstart.md)**: 5-minute setup guide.
 - **[Architecture Deep Dive](docs/architecture.md)**: How the system works under the hood.
 - **[Contributor Guide](docs/contributor-guide.md)**: Join us in building better agent patterns.
 
@@ -37,35 +37,17 @@ claude-boost-public/
 │   ├── architecture.md
 │   ├── user-guide.md
 │   ├── contributor-guide.md
-│   └── SKILL_ANATOMY.md
+│   └── skill-anatomy.md
 └── AGENTS.md            # Agent behavior rules (Source of Truth)
 ```
 
-## Key Concepts
+## 🌐 External Resources
 
-### Skills
+As this repository focuses on framework samples, some foundational concepts are better covered in official documentation:
 
-Skills are self-contained AI capabilities with:
-- Clear input/output contracts
-- Deterministic execution protocols
-- Quality gates and validation
-
-### Hooks
-
-Hooks intercept execution at key points:
-- **Pre-execute**: Validate inputs, check constraints
-- **Post-execute**: Verify outputs, sync state
-
-### Tools
-
-Python scripts for:
-- State synchronization
-- Pre-flight validation
-- Workflow automation
-
-## Getting Started
-
-See [docs/QUICKSTART.md](docs/QUICKSTART.md) for setup instructions.
+- **[Claude Code Documentation](https://docs.anthropic.com/en/docs/agents-and-tools/claude-code)**: Learn about the CLI tool that powers these workflows.
+- **[Model Context Protocol (MCP)](https://modelcontextprotocol.io/)**: The open standard for connecting AI models to data sources.
+- **[Anthropic Agent Skills Best Practices](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/best-practices)**: Official guidelines for building high-quality agent skills.
 
 ## License
 

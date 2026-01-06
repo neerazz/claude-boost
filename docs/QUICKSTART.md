@@ -51,6 +51,6 @@ Each skill has:
 
 ## Next Steps
 
-- Read [ARCHITECTURE.md](ARCHITECTURE.md) for system design
-- Read [SKILL_ANATOMY.md](SKILL_ANATOMY.md) for skill structure
+- Read [architecture.md](architecture.md) for system design
+- Read [skill-anatomy.md](skill-anatomy.md) for skill structure
 - Explore the sample skills in `skills/`
