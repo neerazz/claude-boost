@@ -84,3 +84,17 @@ We minimize AI "hallucination" by using deterministic Python code for:
 - File system operations and state management.
 
 The AI agent's role is focused on **high-level reasoning, synthesis, and creative generation** based on the structured data provided by the tools.
+
+## Universal Prompt Orchestrator (UPO)
+
+At the heart of the L3 layer sits the **Universal Prompt Orchestrator (UPO)**, which serves as the intelligent routing layer for all prompts. UPO ensures every request is analyzed through multiple perspectives before execution.
+
+### Key Capabilities
+
+- **12 Domain Agents**: Analyzes prompts through career, family, health, financial, and 8 other life domains
+- **Intelligent Selection**: Selects 4-12 relevant agents based on keywords and context
+- **Parallel Execution**: Runs agents concurrently for fast, holistic analysis
+- **Round Table Council**: 6-agent quality validation through deliberation rounds
+- **Self-Learning**: Continuously calibrates agent weights based on performance
+
+For a complete deep dive into UPO architecture, see **[UPO Architecture](upo-architecture.md)**.

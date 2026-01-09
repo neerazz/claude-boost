@@ -7,6 +7,7 @@ A collection of sample skills, hooks, and tools demonstrating how to build deter
 - **[User Guide](docs/user-guide.md)**: New to AI agents? Start here.
 - **[Quick Start](docs/quickstart.md)**: 5-minute setup guide.
 - **[Architecture Deep Dive](docs/architecture.md)**: How the system works under the hood.
+- **[UPO Architecture](docs/upo-architecture.md)**: Deep dive into the Universal Prompt Orchestrator - the intelligent routing layer.
 - **[Contributor Guide](docs/contributor-guide.md)**: Join us in building better agent patterns.
 
 ## Overview
